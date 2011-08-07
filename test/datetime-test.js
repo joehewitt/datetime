@@ -33,7 +33,7 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %C': function(topic) {
-            assert.equal(datetime.format(topic, '%C'), '?');
+            assert.equal(datetime.format(topic, '%C'), '');
         },
 
         'with %d': function(topic) {
@@ -49,11 +49,11 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %g': function(topic) {
-            assert.equal(datetime.format(topic, '%g'), '?');
+            assert.equal(datetime.format(topic, '%g'), '');
         },
 
         'with %G': function(topic) {
-            assert.equal(datetime.format(topic, '%G'), '?');
+            assert.equal(datetime.format(topic, '%G'), '');
         },
 
         'with %h': function(topic) {
@@ -69,7 +69,7 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %j': function(topic) {
-            assert.equal(datetime.format(topic, '%j'), '?');
+            assert.equal(datetime.format(topic, '%j'), '');
         },
 
         'with %m': function(topic) {
@@ -109,11 +109,11 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %U': function(topic) {
-            assert.equal(datetime.format(topic, '%U'), '?');
+            assert.equal(datetime.format(topic, '%U'), '');
         },
 
         'with %V': function(topic) {
-            assert.equal(datetime.format(topic, '%V'), '?');
+            assert.equal(datetime.format(topic, '%V'), '');
         },
 
         'with %w': function(topic) {
@@ -121,7 +121,7 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %W': function(topic) {
-            assert.equal(datetime.format(topic, '%W'), '?');
+            assert.equal(datetime.format(topic, '%W'), '');
         },
 
         'with %x': function(topic) {
@@ -155,91 +155,91 @@ vows.describe('datetime basics').addBatch({
 
     'A time in AM': {
         topic: new Date('March 5, 2008 3:01:04 AM'),
-        
+
         'with %H': function(topic) {
             assert.equal(datetime.format(topic, '%H'), '03');
         },
-    
+
         'with %I': function(topic) {
             assert.equal(datetime.format(topic, '%I'), '03');
         },
     },
-    
+
     'A time at midnight': {
         topic: new Date('March 3, 2008 12:01:04 AM'),
-        
+
         'with %H': function(topic) {
             assert.equal(datetime.format(topic, '%H'), '00');
         },
-    
+
         'with %I': function(topic) {
             assert.equal(datetime.format(topic, '%I'), '12');
         },
     },
-    
+
     'A time at noon': {
         topic: new Date('March 3, 2008 12:01:04 PM'),
-        
+
         'with %H': function(topic) {
             assert.equal(datetime.format(topic, '%H'), '12');
         },
-    
+
         'with %I': function(topic) {
             assert.equal(datetime.format(topic, '%I'), '12');
         },
     },
-    
+
     'A day on the first': {
         topic: new Date('March 1, 2008'),
-    
+
         'with %k': function(topic) {
             assert.equal(datetime.format(topic, '%k'), 'st');
         },
     },
-    
+
     'A day on the second': {
         topic: new Date('March 2, 2008'),
-    
+
         'with %k': function(topic) {
             assert.equal(datetime.format(topic, '%k'), 'nd');
         },
     },
-    
+
     'A day on the third': {
         topic: new Date('March 3, 2008'),
-    
+
         'with %k': function(topic) {
             assert.equal(datetime.format(topic, '%k'), 'rd');
         },
     },
-    
+
     'A day on the fourth': {
         topic: new Date('March 4, 2008'),
-    
+
         'with %k': function(topic) {
             assert.equal(datetime.format(topic, '%k'), 'th');
         },
     },
-    
+
     'A day on the fifth': {
         topic: new Date('March 5, 2008'),
-    
+
         'with %k': function(topic) {
             assert.equal(datetime.format(topic, '%k'), 'th');
         },
     },
-    
+
     'A time': {
         topic: new Date('March 5, 2008'),
-    
+
         'formatted with hyphens': function(topic) {
             assert.equal(datetime.format(topic, '%Y-%m-%d'), '2008-03-05');
         },
-    },     
+    },
 
     'A time': {
         topic: new Date('March 5, 2008 3:30 pm'),
-    
+
         'at singular seconds ago': function(topic) {
             var base = new Date('March 5, 2008 3:30:01 pm');
             assert.equal(datetime.formatAgo(topic, null, base), 'a second ago');
@@ -284,5 +284,54 @@ vows.describe('datetime basics').addBatch({
             var base = new Date('March 13, 2009 5:45 pm');
             assert.equal(datetime.formatAgo(topic, null, base), 'March 5th, 2008 at 3:30pm');
         },
-    },     
+    },
+
+    'A time': {
+        topic: new Date('March 5, 2008 3:30 pm'),
+
+        'in singular seconds': function(topic) {
+            var base = new Date('March 5, 2008 3:30:01 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in a second');
+        },
+
+        'in plural seconds': function(topic) {
+            var base = new Date('March 5, 2008 3:30:15 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in 15 seconds');
+        },
+
+        'in singular minutes': function(topic) {
+            var base = new Date('March 5, 2008 3:31 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in a minute');
+        },
+
+        'in plural minutes': function(topic) {
+            var base = new Date('March 5, 2008 3:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in 15 minutes');
+        },
+
+        'in singular hours': function(topic) {
+            var base = new Date('March 5, 2008 4:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in an hour');
+        },
+
+        'in plural hours': function(topic) {
+            var base = new Date('March 5, 2008 5:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'in 2 hours');
+        },
+
+        'in a day': function(topic) {
+            var base = new Date('March 6, 2008 5:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'Thursday at 5:45pm');
+        },
+
+        'in a week': function(topic) {
+            var base = new Date('March 13, 2008 5:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'March 13th at 5:45pm');
+        },
+
+        'in a year': function(topic) {
+            var base = new Date('March 13, 2009 5:45 pm');
+            assert.equal(datetime.formatIn(base, null, topic), 'March 13th, 2009 at 5:45pm');
+        },
+    },
 }).export(module);
