@@ -1,12 +1,16 @@
 {
   "name": "datetime",
   "description": "Date and time formatting",
-  "url": "http://github.com/joehewitt/datetime",
+  "homepage": "http://github.com/joehewitt/datetime",
+  "repository": {
+      "type": "git",
+      "url" : "http://github.com/joehewitt/datetime.git"
+  },
   "keywords": ["date", "time"],
   "author": "Joe Hewitt <joe@joehewitt.com>",
   "contributors": [],
   "dependencies": {"vows": ">=0.5.4"},
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./lib/datetime",
   "directories": { "test": "./test" },
   "engines": { "node": ">=0.4.0" }
