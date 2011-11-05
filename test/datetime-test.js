@@ -189,6 +189,34 @@ vows.describe('datetime basics').addBatch({
         },
     },
 
+    'A time with 1 to 9 milliseconds': {
+        topic: new Date(0, 0, 0, 0, 0, 0, 3),
+
+        'with %l': function (topic) {
+            assert.equal(datetime.format(topic, '%l'), '3');
+        },
+
+        'with %L': function (topic) {
+            assert.equal(datetime.format(topic, '%L'), '003');
+        },
+    },
+
+    'A time with 10 to 99 milliseconds': {
+        topic: new Date(0, 0, 0, 0, 0, 0, 42),
+
+        'with %L': function (topic) {
+            assert.equal(datetime.format(topic, '%L'), '042');
+        },
+    },
+
+    'A time with 100 to 999 milliseconds': {
+        topic: new Date(0, 0, 0, 0, 0, 0, 256),
+
+        'with %L': function (topic) {
+            assert.equal(datetime.format(topic, '%L'), '256');
+        },
+    },
+
     'A day on the first': {
         topic: new Date('March 1, 2008'),
 
