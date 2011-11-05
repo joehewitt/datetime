@@ -229,7 +229,7 @@ vows.describe('datetime basics').addBatch({
         },
     },
 
-    'A time': {
+    'A date': {
         topic: new Date('March 5, 2008'),
 
         'formatted with hyphens': function(topic) {
@@ -237,7 +237,7 @@ vows.describe('datetime basics').addBatch({
         },
     },
 
-    'A time': {
+    'A time in past': {
         topic: new Date('March 5, 2008 3:30 pm'),
 
         'at singular seconds ago': function(topic) {
@@ -277,16 +277,16 @@ vows.describe('datetime basics').addBatch({
 
         'at a week ago': function(topic) {
             var base = new Date('March 13, 2008 5:45 pm');
-            assert.equal(datetime.formatAgo(topic, null, base), 'March 5th at 3:30pm');
+            assert.equal(datetime.formatAgo(topic, null, base), 'March  5th at 3:30pm');
         },
 
         'at a year ago': function(topic) {
             var base = new Date('March 13, 2009 5:45 pm');
-            assert.equal(datetime.formatAgo(topic, null, base), 'March 5th, 2008 at 3:30pm');
+            assert.equal(datetime.formatAgo(topic, null, base), 'March  5th, 2008 at 3:30pm');
         },
     },
 
-    'A time': {
+    'A time in future': {
         topic: new Date('March 5, 2008 3:30 pm'),
 
         'in singular seconds': function(topic) {
