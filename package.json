@@ -9,7 +9,7 @@
   "keywords": ["date", "time"],
   "author": "Joe Hewitt <joe@joehewitt.com>",
   "contributors": [],
-  "dependencies": {"vows": ">=0.5.4"},
+  "devDependencies": {"vows": ">=0.5.4"},
   "version": "0.0.3",
   "main": "./lib/datetime",
   "directories": { "test": "./test" },
