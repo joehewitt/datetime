@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/joehewitt/datetime.png)](http://travis-ci.org/joehewitt/datetime)
 datetime
 ========
 
