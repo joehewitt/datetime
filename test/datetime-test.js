@@ -2,9 +2,7 @@ var path = require('path'),
     assert = require('assert'),
     vows = require('vows');
 
-require.paths.unshift(path.join(__dirname, '..', 'lib'));
-
-var datetime = require('datetime');
+var datetime = require('../lib/datetime');
 
 // *************************************************************************************************
 
@@ -141,7 +139,7 @@ vows.describe('datetime basics').addBatch({
         },
 
         'with %z': function(topic) {
-            assert.equal(datetime.format(topic, '%z'), '-0800');
+            assert.equal(datetime.format(topic, '%z'), '-08:00');
         },
 
         'with %Z': function(topic) {
