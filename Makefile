@@ -1,6 +1,7 @@
+BIN = ./node_modules/.bin
 default: test
 
 test: 
-	vows test/*-test.js
+	$(BIN)/vows test/*-test.js
 
 .PHONY: test
